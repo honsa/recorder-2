@@ -26,7 +26,7 @@ declare global {
   }
 }
 
-describe('Injected Script', () => {
+describe.skip('Injected Script', () => {
   let fn;
   beforeEach(() => {
     require('../src/injected');

@@ -102,7 +102,13 @@ async function beforeStep(...args) {
 
 export async function open(url, options: RunnerOptions, cb) {
   delay = options.delay || 100;
-  browser = await puppeteer.launch({ headless: false, defaultViewport: null });
+  browser = await puppeteer.launch({
+    headless: false,
+    defaultViewport: null,
+    args: [
+      '--enable-blink-features=ComputedAccessibilityInfo',
+    ],
+  });
   const pages = await browser.pages();
   page = pages[0];
   await page.evaluateOnNewDocument(aria);
